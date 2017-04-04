@@ -1,3 +1,6 @@
 [submodule "cookbooks/nace-ckan"]
 	path = cookbooks/nace-ckan
 	url = git@github.alaska.edu:gina-cookbooks/nace-ckan
+[submodule "cookbooks/nace_ckan_app"]
+	path = cookbooks/nace_ckan_app
+	url = git@github.alaska.edu:gina-cookbooks/nace_ckan_app
