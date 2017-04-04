@@ -7,6 +7,7 @@ end
 
 cookbook 'gina-server'
 local_cookbook 'nace-ckan'
+local_cookbook 'nace_ckan_app'
 
 # TODO: migrate other ogc cookbooks
 # local_cookbook 'gina_ws_wms'
