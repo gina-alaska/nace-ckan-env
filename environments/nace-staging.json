@@ -21,7 +21,7 @@
     "java": "= 1.47.0",
     "logrotate": "= 2.1.0",
     "mingw": "= 2.0.0",
-    "nace-ckan": "= 2.0.0",
+    "nace-ckan": "= 2.0.1",
     "nace_ckan_app": "= 0.1.0",
     "ntp": "= 1.8.6",
     "ohai": "= 5.0.0",
