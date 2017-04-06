@@ -1,0 +1,20 @@
+{
+  "name": "nace-solr",
+  "description": "Role for solr instances",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "java": { "jdk_version": 7 },
+    "solr": { "data_dir": "/opt/solr-4.10.4/example/solr" }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[gina-server::aws]",
+    "recipe[nace-ckan::solr]"
+  ],
+  "env_run_lists": {
+
+  }
+}
