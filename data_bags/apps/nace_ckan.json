@@ -1,0 +1,25 @@
+{
+  "id": "nace_ckan",
+  "_default": {
+    "postgresql": {
+      "name": "ckan",
+      "address": "localhost",
+      "username": "ckan",
+      "password": "changemenow"
+    },
+    "cometchat": {
+      "db_host": "127.0.0.1",
+      "db_username": "cometchat",
+      "db_password": "changemenow!",
+      "db_name": "cometchat"
+    },
+    "s3filestore": {
+      "aws_bucket_name": "nasa-ace-ckan",
+      "aws_storage_path": "nace-ckan",
+      "aws_access_key_id": "abcdefg",
+      "aws_secret_access_key": "abcdefg"
+    },
+    "session_secret": "/LQ1h6/Sl0EFEF1maYhFs0Sxo",
+    "instance_uuid": "200e5ca3-cffd-47aa-a93e-4c40bb81ce2c"
+  }
+}
