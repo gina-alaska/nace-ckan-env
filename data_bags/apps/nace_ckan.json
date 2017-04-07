@@ -20,6 +20,9 @@
       "aws_secret_access_key": "abcdefg"
     },
     "session_secret": "/LQ1h6/Sl0EFEF1maYhFs0Sxo",
-    "instance_uuid": "200e5ca3-cffd-47aa-a93e-4c40bb81ce2c"
+    "instance_uuid": "200e5ca3-cffd-47aa-a93e-4c40bb81ce2c",
+    "googleanalytics": false,
+    "mapbox_id": "gina-alaska.heb1gpfg",
+    "mapbox_token": ""
   }
 }
