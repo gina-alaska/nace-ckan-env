@@ -16,6 +16,11 @@ data "terraform_remote_state" "nace_vpc" {
   }
 }
 
+data "aws_subnet" "selected" {
+  vpc_id = "${data.terraform_remote_state.nace_vpc.vpc_id}"
+  cidr_block = "${element(data.terraform_remote_state.nace_vpc.public_subnets, 0)}"
+}
+
 provider "aws" {
   region = "${var.region}"
   profile = "${var.profile}"
@@ -23,15 +28,16 @@ provider "aws" {
 }
 
 module "rds" {
-  name = "NASA ACE database"
+  name = "${var.env}"
   source = "../modules/rds"
-  env = "${var.env}"
-  db_instance_type = "db.t2.micro"
+  instance_type = "db.t2.micro"
   vpc_id = "${data.terraform_remote_state.nace_vpc.vpc_id}"
   /*vpc_cidr_block = "${module.vpc.cidr_block}"*/
-  ingress_subnets = "10.40.101.0/24"
+  ingress_subnets = "${data.aws_subnet.selected.cidr_block}"
   db_password = "${var.db_password}"
   aws_db_subnet_group_id = "${data.terraform_remote_state.nace_vpc.database_subnet_group}"
-
+  multi_az_db = "${var.multi_az_db}"
   tags = "${merge(var.tags, map("Environment", format("%s", var.env)))}"
+  engine = "postgresql"
+  engine_version = "9.3.14"
 }

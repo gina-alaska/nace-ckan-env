@@ -16,11 +16,6 @@ data "terraform_remote_state" "nace_vpc" {
   }
 }
 
-data "aws_subnet" "selected" {
-  vpc_id = "${data.terraform_remote_state.nace_vpc.vpc_id}"
-  cidr_block = "${element(data.terraform_remote_state.nace_vpc.public_subnets, 0)}"
-}
-
 provider "aws" {
   region = "${var.region}"
   profile = "${var.profile}"
@@ -40,12 +35,17 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "ckan" {
+data "aws_subnet" "selected" {
+  vpc_id = "${data.terraform_remote_state.nace_vpc.vpc_id}"
+  cidr_block = "${element(data.terraform_remote_state.nace_vpc.public_subnets, 0)}"
+}
+
+resource "aws_instance" "chat" {
   connection {
     user = "ubuntu"
   }
 
-  count = "${var.ckan_instance_count}"
+  count = "${var.chat_instance_count}"
   instance_type = "t2.micro"
 
   ami = "${data.aws_ami.ubuntu.id}"
@@ -57,18 +57,18 @@ resource "aws_instance" "ckan" {
   tags = "${merge(var.tags, map("Name", "NASA ACE ${var.env}"))}"
 }
 
-resource "null_resource" "provision_ckan" {
-  count = "${var.ckan_instance_count}"
+resource "null_resource" "provision_chat" {
+  count = "${var.chat_instance_count}"
   provisioner "chef" {
     connection {
-      host = "${element(aws_instance.ckan.*.public_ip, count.index)}"
+      host = "${element(aws_instance.chat.*.public_ip, count.index)}"
       user = "ubuntu"
       private_key = "${file(var.private_key_path)}"
     }
     environment = "${var.chef_environment}"
-    run_list = ["recipe[gina-server::aws]", "recipe[nace_ckan_app::default]"]
-    node_name = "aws-nace-${var.env}-${element(aws_instance.ckan.*.id, count.index)}"
-    vault_json =  "{\"apps\":\"nace_ckan\"}"
+    run_list = ["recipe[gina-server::aws]", "recipe[nace_ckan_app::cometchat]"]
+    node_name = "aws-nace-${var.env}-${element(aws_instance.chat.*.id, count.index)}"
+    /*vault_json =  "{\"apps\":\"nace_ckan\"}"*/
     server_url = "${var.chef_server_url}"
     user_name = "${var.chef_user_name}"
     user_key = "${file(var.chef_user_key_path)}"

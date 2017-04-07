@@ -1,5 +1,5 @@
 output "db_address" {
-	value = "${aws_db_instance.default.address}"
+	value = "${aws_db_instance.db.address}"
 }
 
 output "db_name" {

@@ -55,6 +55,16 @@ resource "aws_security_group_rule" "allow_uaf" {
     security_group_id = "${aws_security_group.gina_ssh.id}"
 }
 
+resource "aws_security_group_rule" "allow_ckan_access" {
+    type = "ingress"
+    from_port = 8080
+    to_port = 8080
+    protocol = "tcp"
+    cidr_blocks = ["${var.public_subnets}", "10.40.1.0/24"]
+    security_group_id = "${aws_security_group.gina_ssh.id}"
+}
+
+
 resource "aws_security_group_rule" "allow_all_out" {
     type = "egress"
     protocol = "-1"

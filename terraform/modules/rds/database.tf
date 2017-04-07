@@ -17,19 +17,19 @@ resource "aws_security_group" "db" {
   tags                 = "${merge(var.tags, map("Name", format("%s SG", var.name)))}"
 }
 
-resource "aws_db_instance" "default" {
-  identifier           = "nasa-ace-db-${var.env}"
-  allocated_storage    = "${var.db_storage}"
-  engine               = "postgres"
-  engine_version       = "9.5.2"
-  instance_class       = "${var.db_instance_type}"
+resource "aws_db_instance" "db" {
+  identifier           = "nace-${var.name}"
+  allocated_storage    = "${var.storage}"
+  engine               = "${var.engine}"
+  engine_version       = "${var.engine_version}"
+  instance_class       = "${var.instance_type}"
   name                 = "${var.db_name}"
   username             = "${var.db_username}"
   password             = "${var.db_password}"
   storage_type         = "gp2"
   vpc_security_group_ids = ["${aws_security_group.db.id}"]
   db_subnet_group_name = "${var.aws_db_subnet_group_id}"
-  multi_az             = true
-
+  multi_az             = "${var.multi_az_db}"
+  skip_final_snapshot  = true
   tags                 = "${merge(var.tags, map("Name", format("%s", var.name)))}"
 }

@@ -12,7 +12,7 @@ TerraformRakeTasks::Tasks.load_tasks!
 # this could be generated automatically bucket
 # i wanted to explicitely set it so we could control order
 def environment_list
-  %w{ deploy vpc database solr ckan }
+  %w{ deploy vpc chatdb chat solr ckandb ckan elb static_site }
 end
 
 def load_env(tf_env = nil, &block)
@@ -62,11 +62,19 @@ environment_list.each do |name|
         Rake::Task['bootstrap'].invoke
       end
     end
+
+    desc "Clean #{name} terraform states"
+    task :clean do
+      header "Running #{name}:clean"
+      load_env(name) do
+        rm_rf ".terraform"
+      end
+    end
   end
 end
 
 namespace :all do
-  %w{ plan apply show get graph }.each do |action|
+  %w{ plan apply show get graph clean }.each do |action|
     desc "Run `terraform #{action}` for all environments"
     task action.to_sym do
       environment_list.each do |name|

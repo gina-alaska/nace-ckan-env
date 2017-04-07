@@ -73,13 +73,13 @@ resource "null_resource" "provision_ckan_solr" {
       user = "ubuntu"
       private_key = "${file(var.private_key_path)}"
     }
-    run_list = ["recipe[gina-server::aws]", "recipe[nace-ckan::solr]"]
+    run_list = ["role[nace-solr]"]
     environment = "${var.chef_environment}"
     node_name = "aws-nace-${var.env}-${aws_instance.solr.id}"
     server_url = "${var.chef_server_url}"
     user_name = "${var.chef_user_name}"
     user_key = "${file(var.chef_user_key_path)}"
-    version = "12.16.42"
+    version = "12.19.36"
     recreate_client = true
   }
 }
