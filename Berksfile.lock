@@ -4,6 +4,8 @@ DEPENDENCIES
     path: cookbooks/nace-ckan
   nace_ckan_app
     path: cookbooks/nace_ckan_app
+  nace_cometchat
+    path: cookbooks/nace_cometchat
 
 GRAPH
   apt (6.0.1)
@@ -55,7 +57,8 @@ GRAPH
     compat_resource (>= 0.0.0)
   mingw (2.0.0)
     seven_zip (>= 0.0.0)
-  nace-ckan (2.0.1)
+  mysql (8.3.1)
+  nace-ckan (2.1.0)
     database (>= 0.0.0)
     httpd (>= 0.0.0)
     poise-python (>= 0.0.0)
@@ -64,6 +67,11 @@ GRAPH
     tar (>= 0.0.0)
   nace_ckan_app (0.1.0)
     chef-vault (>= 0.0.0)
+    nace-ckan (>= 0.0.0)
+  nace_cometchat (0.1.0)
+    chef-vault (>= 0.0.0)
+    database (>= 0.0.0)
+    mysql (>= 0.0.0)
     nace-ckan (>= 0.0.0)
   ntp (1.8.6)
   ohai (5.0.0)
