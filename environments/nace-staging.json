@@ -23,7 +23,7 @@
     "mingw": "= 2.0.0",
     "mysql": "= 8.3.1",
     "nace-ckan": "= 2.2.3",
-    "nace_ckan_app": "= 0.1.0",
+    "nace_ckan_app": "= 0.2.2",
     "nace_cometchat": "= 0.2.4",
     "ntp": "= 1.8.6",
     "ohai": "= 5.0.0",
