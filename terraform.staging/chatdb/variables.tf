@@ -14,21 +14,14 @@ variable "tags" {
   }
 }
 
-#credentials
-
-variable "key_name" {}
-variable "private_key_path" {}
-variable "public_key_path" {}
-
-# chef stuff
-
-variable "chef_server_url" {}
-variable "chef_user_name" {}
-variable "chef_user_key_path" {}
-variable "chef_environment" {
-  default = "nace-staging"
+variable "chatdb_name" {
+  default = "cometchat"
 }
+variable "chatdb_username" {
+  default = "cometchat"
+}
+variable "chatdb_password" {}
 
-variable "ckan_storage_bucket" {
-  default = "nace-ckan-storage"
+variable "multi_az_db" {
+  default = false
 }

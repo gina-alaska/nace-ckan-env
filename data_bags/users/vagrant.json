@@ -1,0 +1,5 @@
+{
+  "id": "vagrant",
+  "groups": ["nace_admin"],
+  "action": ["create", "manage"]
+}

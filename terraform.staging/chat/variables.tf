@@ -13,10 +13,6 @@ variable "tags" {
     "fund_org" = "397427-66762"
   }
 }
-variable "ckan_instance_count" {
-  description = "Number of instances to create after the leader"
-  default = 1
-}
 
 #credentials
 
@@ -31,4 +27,8 @@ variable "chef_user_name" {}
 variable "chef_user_key_path" {}
 variable "chef_environment" {
   default = "nace-staging"
+}
+
+variable "chat_instance_count" {
+  default = 1
 }

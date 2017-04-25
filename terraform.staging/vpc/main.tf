@@ -80,7 +80,7 @@ resource "aws_security_group_rule" "allow_ckan_access" {
 
 resource "aws_security_group" "public_web" {
 	vpc_id = "${module.vpc.vpc_id}"
-  description = "Manage security group for web access"
+  description = "Manage security group for ssh access"
 }
 
 resource "aws_security_group_rule" "allow_all_http_access" {

@@ -13,10 +13,6 @@ variable "tags" {
     "fund_org" = "397427-66762"
   }
 }
-variable "ckan_instance_count" {
-  description = "Number of instances to create after the leader"
-  default = 1
-}
 
 #credentials
 

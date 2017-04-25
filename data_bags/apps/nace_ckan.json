@@ -19,7 +19,7 @@
       "aws_access_key_id": "abcdefg",
       "aws_secret_access_key": "abcdefg"
     },
-    "site_url": "http://localhost",
+    "site_url": "http://catalog-test.ace.uaf.edu",
     "session_secret": "/LQ1h6/Sl0EFEF1maYhFs0Sxo",
     "instance_uuid": "200e5ca3-cffd-47aa-a93e-4c40bb81ce2c",
     "googleanalytics": false,

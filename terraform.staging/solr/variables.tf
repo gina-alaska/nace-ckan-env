@@ -13,9 +13,15 @@ variable "tags" {
     "fund_org" = "397427-66762"
   }
 }
-variable "ckan_instance_count" {
-  description = "Number of instances to create after the leader"
-  default = 1
+
+variable "aws_amis" {
+  default = {
+    us-west-2 = "ami-adcb36cd"
+  }
+}
+
+variable "instance_type" {
+  default = "t2.micro"
 }
 
 #credentials
