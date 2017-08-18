@@ -34,12 +34,14 @@ def load_env(tf_env = nil, &block)
     Dotenv.load("#{tf_env}/.env")
   end
 
-  # set some env variables for terraform
-  ENV['TF_ENV'] = tf_env
-  # ENV['REMOTE_TF_STATE']="s3://#{ENV['S3_BUCKET']}/ubermap/#{ENV['TF_PROJECT']}-#{tf_env}.json"
-  ENV['TF_VAR_env']=tf_env
+  if tf_env
+    # set some env variables for terraform
+    ENV['TF_ENV'] = tf_env
+    # ENV['REMOTE_TF_STATE']="s3://#{ENV['S3_BUCKET']}/ubermap/#{ENV['TF_PROJECT']}-#{tf_env}.json"
+    ENV['TF_VAR_env']=tf_env
 
-  Dir.chdir(tf_env, &block)
+    Dir.chdir(tf_env, &block)
+  end
 end
 
 def header(text)
@@ -49,6 +51,17 @@ def header(text)
   puts text.colorize(:green)
   puts "#{'*' * text.length}".colorize(:green)
   puts
+end
+
+namespace :setup do
+  desc "Fetch ssh keys"
+  task :fetch_keys do
+    header "Running keys:fetch"
+    load_env() do 
+      Rake::Task['keys:fetch'].reenable
+      Rake::Task['keys:fetch'].invoke
+    end
+  end
 end
 
 environment_list[:all].each do |name|
