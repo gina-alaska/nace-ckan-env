@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem 'rake'
 gem 'aws-sdk'
-gem 'terraform-rake-tasks', path: '~/gits/terraform-rake-tasks'  #git: 'https://github.com/gina-alaska/terraform-rake-tasks'
+#gem 'terraform-rake-tasks', path: '~/gits/terraform-rake-tasks'  #git: 'https://github.com/gina-alaska/terraform-rake-tasks'
+gem 'terraform-rake-tasks', git: 'https://github.com/gina-alaska/terraform-rake-tasks'
 gem 'highline'
 gem 'colorize'

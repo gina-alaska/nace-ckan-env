@@ -1,5 +1,6 @@
-PATH
-  remote: ~/gits/terraform-rake-tasks
+GIT
+  remote: https://github.com/gina-alaska/terraform-rake-tasks
+  revision: a834cdb9de746c0c3b8e085c294c9e6249416c40
   specs:
     terraform-rake-tasks (0.1.2)
       aws-sdk (~> 2.3, >= 2.3.0)
@@ -35,4 +36,4 @@ DEPENDENCIES
   terraform-rake-tasks!
 
 BUNDLED WITH
-   1.13.5
+   1.15.3
