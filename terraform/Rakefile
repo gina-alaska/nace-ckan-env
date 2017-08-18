@@ -24,6 +24,7 @@ def environment_list
   list
 end
 
+Dotenv.load('.env')
 def load_env(tf_env = nil, &block)
   if File.exists?('.env')
     Dotenv.load('.env')
